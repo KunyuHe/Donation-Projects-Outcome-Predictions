@@ -90,7 +90,7 @@ We observe that projects with **higher number of items requested, lower minimum,
 
 ### a). Random Forest
 
-After tuning by grid search, random forest classificatio achieved a test accuracy of 74.813%, test AUC of 0.638.
+After tuning by grid search, random forest classification achieved a test accuracy of 74.813%, test AUC of 0.638.
 
 ![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/important_features.png)
 
