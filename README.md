@@ -21,8 +21,6 @@ DonorsChoose.org is an online charity that makes it easy to help students in nee
 
 The 2014 KDD Cup asks participants to help DonorsChoose.org identify projects that are exceptionally exciting to the business, at the time of posting. While all projects on the site fulfill some kind of need, certain projects have a quality above and beyond what is typical. By identifying and recommending such projects early, they will improve funding outcomes, better the user experience, and help more students receive the materials they need to learn.
 
-Successful predictions may require a broad range of analytical skills, from natural language processing on the need statements to data mining and classical supervised learning on the descriptive factors around each project.
-
 **For this project, the challenge would instead be predicting whether a proposed project would get fully funded.**
 
 **Getting fully funded is one of the requirements of being "exciting" to DonorsChoose.org, hence a precise prediction of whether future proposed projects can be fully funded would be an important building block for finding "exciting" projects.**
@@ -56,4 +54,27 @@ To recognize potential fully funded projects from unsuccessful ones accurately, 
 * __[Random Forest](https://en.wikipedia.org/wiki/Random_forest):__  ensemble learning method that operates by constructing a multitude of decision trees at training time, provided by [`scikit-learn`](https://scikit-learn.org/stable/)
 * __[XGBoost](https://en.wikipedia.org/wiki/XGBoost):__ scalable, portable and distributed gradient boosting, provided by [`XGBoost`](https://xgboost.readthedocs.io/en/latest/)
 
+
 ## 5. Exploratory Data Analysis
+
+Below are some examples from the [EDA section](https://render.githubusercontent.com/view/ipynb?commit=bfebd33c604a6a184b1aab5074da69e4598a35fa&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4b756e797548652f446f6e6174696f6e2d50726f6a656374732d4f7574636f6d652d50726564696374696f6e732f626665626433336336303461366131383462316161623530373464613639653435393861333566612f50726564696374696e672532304f7574636f6d65732532306f66253230446f6e6174696f6e25323050726f6a656374732e6970796e62&nwo=KunyuHe%2FDonation-Projects-Outcome-Predictions&path=Predicting+Outcomes+of+Donation+Projects.ipynb&repository_id=164807280&repository_type=Repository#Exploratory-Data-Analysis) of my final report:
+
+### a). Project Counts across States
+
+![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/by_state.png)
+
+We can see that **California, New York, North Carolina, Illinois, Texas** are the states with highest numbers of projects across the US.
+
+### b). Project Outcome by Primary Focus Subject
+
+![]()
+
+Here we can see the proportion of successful projects varies across promary focus subjects. **Sujects `Economics`, `Environmental Science`, `Music` and `Nutrition` have highest fully funded rates.**
+
+### c). Project Outcome by Month of Year
+
+![]()
+
+We observe that the **rate of fully funded projects are much higher (by nearly 8% on average) over the year from `August to December`, compared with the period from `January to July`.** Month of year could be a good predictor for whether a project would succeed.
+
+### d). 
