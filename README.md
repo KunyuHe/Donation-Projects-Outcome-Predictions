@@ -67,14 +67,23 @@ We can see that **California, New York, North Carolina, Illinois, Texas** are th
 
 ### b). Project Outcome by Primary Focus Subject
 
-![]()
+![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/subject_areas.png)
 
 Here we can see the proportion of successful projects varies across promary focus subjects. **Sujects `Economics`, `Environmental Science`, `Music` and `Nutrition` have highest fully funded rates.**
 
 ### c). Project Outcome by Month of Year
 
-![]()
+![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/month_of_year.png)
 
 We observe that the **rate of fully funded projects are much higher (by nearly 8% on average) over the year from `August to December`, compared with the period from `January to July`.** Month of year could be a good predictor for whether a project would succeed.
 
-### d). 
+### d). Project Outcome by Statistics of Resources Requested
+
+![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/resouces.png)
+
+We observe that projects with **higher number of items requested, lower minimum, median and maximum price of requested items** are more likely to get fully funded. The differences are quiet significant.
+
+*Please check the full report for further reference.*
+
+
+## 6. Results
