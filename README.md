@@ -74,9 +74,18 @@ Random forest is considered a very handy and easy to use algorithm, because the 
 ### b) XGBoost
 
 
-## 5. Exploratory Data Analysis
+## 5. EDA (Exploratory Data Analysis)
 
-Below are some examples from the [EDA section](https://render.githubusercontent.com/view/ipynb?commit=bfebd33c604a6a184b1aab5074da69e4598a35fa&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4b756e797548652f446f6e6174696f6e2d50726f6a656374732d4f7574636f6d652d50726564696374696f6e732f626665626433336336303461366131383462316161623530373464613639653435393861333566612f50726564696374696e672532304f7574636f6d65732532306f66253230446f6e6174696f6e25323050726f6a656374732e6970796e62&nwo=KunyuHe%2FDonation-Projects-Outcome-Predictions&path=Predicting+Outcomes+of+Donation+Projects.ipynb&repository_id=164807280&repository_type=Repository#Exploratory-Data-Analysis) of my final report:
+**The EDA notebook for this project is available [here](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/d1f690c5-7b37-4dc9-9063-e4b371e3610d/view?access_token=3a8f94c265f0184cd98a4aa5aac7d335f8d42caf9688a10f59f35702b3fe67a2).**
+
+In the EDA notebook, I perform some initial data explorations on the preprocessed data, output of the [ETL notebook](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/eec51c21-c64d-44be-b8ae-89d37dfc5cbd/view?projectid=fe8f6b6c-3d7e-4e63-bda2-d3d875f07abb&context=analytics) in data file `train.csv` on [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage?S_PKG=AW&cm_mmc=Search_Google-_-Cloud_Cloud+Platform-_-WW_NA-_-ibm+cloud+object+storage_Exact_&cm_mmca1=000016GC&cm_mmca2=10007090&cm_mmca7=9021720&cm_mmca8=aud-311016886972:kwd-320507222281&cm_mmca9=_k_CjwKCAiAyfvhBRBsEiwAe2t_i1ZADYFVHn5C4dt5QQKrElVtqwWfFS08ZPk8slGBze9TyaULK38v3xoCIT0QAvD_BwE_k_&cm_mmca10=317209285666&cm_mmca11=e&mkwid=_k_CjwKCAiAyfvhBRBsEiwAe2t_i1ZADYFVHn5C4dt5QQKrElVtqwWfFS08ZPk8slGBze9TyaULK38v3xoCIT0QAvD_BwE_k_|1445|530573&cvosrc=ppc.google.ibm%20cloud%20object%20storage&cvo_campaign=000016GC&cvo_crid=317209285666&Matchtype=e&gclid=CjwKCAiAyfvhBRBsEiwAe2t_i1ZADYFVHn5C4dt5QQKrElVtqwWfFS08ZPk8slGBze9TyaULK38v3xoCIT0QAvD_BwE). I concentrate on how the proportion of fully funded projects, on average, changes across groups divided by several categorical variables and how some numerical variables differ across successful and failed donation projects. By EDA, I'm attempting to find those highly relevant to the outcome of donation projects.
+
+Findings include:
+
+* Total price requested, including and excluding optional tips, can be really strong signals for predicting project outcomes
+* Word counts for need statement, short description and title of the projects differ greatly between successful and failed donation projects
+* Number of items requsted, maximum, median, and minimum unit prices of the items requested can be good predictors of project outcomes
+* Primary focus area of a project contains redundant information and can be represented by the project's primary focus subjects
 
 ### a). Project Counts across States
 
