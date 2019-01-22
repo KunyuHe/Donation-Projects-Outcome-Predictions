@@ -90,7 +90,22 @@ Findings include:
 *(Please check the full report for further reference)*
 
 
-## 6. Results
+## 6. Feature Engineering
+
+**The Feature Engineering notebook for this project is available [here](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/6d8c5d76-ea9f-4bf6-9b8a-3a0b09fb80cc/view?access_token=91df3b3a5ba72d70b2b60a9358fcdd1aa23098a6cc2acd4879fb39659013711d).**
+
+In the notebook, I'll read preprocessed training and testing data, which comes as data outputs of the [ETL notebook](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/5a618e1d-b09e-4956-b0f0-ced1bbeae5a3/view?access_token=a7f6bc86b447a978fbf3c54457916f471e1fa4c4eccc9542d20086a6d63f6cb7) and stored on [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage?S_PKG=AW&cm_mmc=Search_Google-_-Cloud_Cloud+Platform-_-WW_NA-_-+ibm++object++storage_Broad_&cm_mmca1=000016GC&cm_mmca2=10007090&cm_mmca7=9060146&cm_mmca8=aud-311016886972:kwd-346458796492&cm_mmca9=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_&cm_mmca10=317209285867&cm_mmca11=b&mkwid=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_|1445|530530&cvosrc=ppc.google.%2Bibm%20%2Bobject%20%2Bstorage&cvo_campaign=000016GC&cvo_crid=317209285867&Matchtype=b&gclid=CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE) in `.csv` format, and perform feature engineering based on findings in the [EDA notebook](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/ea878b70-71e0-406e-a118-7c8e898db8fb/view?access_token=031878c433b299b1fd3fbf7c0fb07b2ebc776d4b30ced9b8fe37e18a13890cec). The process includes:
+
+* Create features including month, year of project posting and word counts for title, need statement and short description of the project
+* Apply one-hot encoding on multinomial variables with multiple categories
+* Drop our target, essay data and variables with too many categories from the features dataframe
+* Use standard scaler to standardize the features dataframe and transform it into a Numpy feature matrix
+* Extract the target variable *(`fully_funded`)*
+
+Output data is stored in `.csv` fomat.
+
+
+## 7. Results
 
 ### a). Random Forest
 
