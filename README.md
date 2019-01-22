@@ -3,15 +3,6 @@ Donation Projects Outcome Predictions
 
 ## 1. Executive Summary
 
-In this project, I use both Random Forest and XGBoost to predict whether a donation project posted on DonorsChoose.org can get fully funded, based on information on each project, resources they requested, project essays posted and their outcomes. Training and test sets are split from projects posted before 01/01/2014.
-
-Models are first built with default parameters and tuned with grid search based on cross-validation. After tuning, random forest achieves a test accuracy of 74.813%, test AUC of 0.638. Most important features, according to random forest, include:
-
-* Total price the project requested, including and excluding optional tip that donors give to DonorsChoose.org
-* Number of items requsted, maximum, median, and minimum unit prices of the items
-* Word count for need statement, short description and title of the projects
-* Number of students reached
-
 
 ## 2. Introduction
 
@@ -51,8 +42,17 @@ Basically there are five data sets, namely `projects`, `resources`, `essays`, `d
 
 To recognize potential fully funded projects from unsuccessful ones accurately, we use three methods to implement the classification:
 
-* __[Random Forest](https://en.wikipedia.org/wiki/Random_forest):__  ensemble learning method that operates by constructing a multitude of decision trees at training time, provided by [`scikit-learn`](https://scikit-learn.org/stable/)
-* __[XGBoost](https://en.wikipedia.org/wiki/XGBoost):__ scalable, portable and distributed gradient boosting, provided by [`XGBoost`](https://xgboost.readthedocs.io/en/latest/)
+### a) Random Forest
+
+Random forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees. *(Source: [Wikipedia](https://en.wikipedia.org/wiki/Random_forest))*
+
+The randomness in random forests originates in two facts: each tree in the ensemble is built from a sample drawn with replacement (i.e., a bootstrap sample) from the training set; in addition, when splitting a node during the construction of the tree, the split that is chosen is no longer the best split among all features, but is instead, the best split among a random subset of the features. *(Source: [scikit-learn User Guide](https://scikit-learn.org/stable/modules/ensemble.html#forest))*
+
+Random forest is considered a very handy and easy to use algorithm, because the number of hyperparameters is not that high, and they are straightforward to understand. Overfitting hardly happens in random forests, once there are enough trees in the forest.
+
+**However, since random forest is based on bagging, to achieve good performance we need a large number of very deep trees, which makes the training process rather slow on large data sets.**
+
+### b) XGBoost
 
 
 ## 5. Exploratory Data Analysis
