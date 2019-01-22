@@ -39,7 +39,7 @@ Since `outcomes` is only provided for the training set and access to test set is
 
 Notice that once we know the total price a project required, combined with total donations the project got, predicting `fully_funded` would be meaningless. So we won't use `donations` data set to train or test our model.
 
-### b). ETL (
+### b). ETL (Extract, Transform, Load)
 
 **The ETL notebook for this project is available [here](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/eec51c21-c64d-44be-b8ae-89d37dfc5cbd/view?access_token=84b49773ba7003cf55cdd5450a8763cc8997afa9c8c52957a0d87ed4f649e4a2).**
 
@@ -52,7 +52,7 @@ In the ETL notebook, I load the data, which comes separately in `.csv` format fr
 * Encoding some columns as binary dummies and converting some others to categoricals
 * Dropping rows that still contain NA values
 
-After preprocessing, the output dataframes *(`train` and `test`)* are stored in `.csv` format back to object storage as data assets named accordingly *(`Donation-Projects-Outcome-Prediction.data.train.csv` and `Donation-Projects-Outcome-Prediction.data.test.csv` in the [~/data section])* for future use.
+After preprocessing, the output dataframes *(`train` and `test`)* are stored in `.csv` format back to object storage as data assets named accordingly *(`Donation-Projects-Outcome-Prediction.data.train.csv` and `Donation-Projects-Outcome-Prediction.data.test.csv`)* for future use.
 
 *(The naming convention comes from [Lightweight IBM Cloud Garage Method for Data Science](https://github.com/IBM/coursera/blob/master/coursera_capstone/Lightweight_IBM%20Cloud_Garage_Method_for_Data_Science_Romeo_Kienzler.pdf) by Romeo Kienzler)*
 
