@@ -14,10 +14,12 @@ The 2014 KDD Cup asks participants to help DonorsChoose.org identify projects th
 
 **For this project, the challenge would instead be predicting whether a proposed project would get fully funded.**
 
-**Getting fully funded is one of the requirements of being "exciting" to DonorsChoose.org, hence a precise prediction of whether future proposed projects can be fully funded would be an important building block for finding "exciting" projects.**
+Getting fully funded is one of the requirements of being "exciting" to DonorsChoose.org, hence a precise prediction of whether future proposed projects can be fully funded would be an important building block for finding "exciting" projects.
 
 
 ## 3. Data
+
+### a). Introduction to Data
 
 **Directly from the project [Data Description](https://www.kaggle.com/c/kdd-cup-2014-predicting-excitement-at-donors-choose/data):**
 
@@ -33,9 +35,26 @@ Basically there are five data sets, namely `projects`, `resources`, `essays`, `d
 * `donations` - contains information about the donations to each project. This is only provided for projects in the training set.
 * `outcomes` - contains information about the outcomes of projects in the training set.
 
-**Since `outcomes` is only provided for the training set and access to test set is blocked by Kaggle. Information on whether a project posted after 2014-01-01 got fully funded is not available. Hence we only use the original training set and split it into new training and test set.**
+Since `outcomes` is only provided for the training set and access to test set is blocked by Kaggle. Information on whether a project posted after 2014-01-01 got fully funded is not available. **Hence we only use the original training set and split it into new training and test set.**
 
-**Notice that once we know the total price a project required, combined with total donations the project got, predicting `fully_funded` would be meaningless. So we won't use `donations` data set to train or test our model.**
+Notice that once we know the total price a project required, combined with total donations the project got, predicting `fully_funded` would be meaningless. So we won't use `donations` data set to train or test our model.
+
+### b). ETL (
+
+**The ETL notebook for this project is available [here](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/eec51c21-c64d-44be-b8ae-89d37dfc5cbd/view?access_token=84b49773ba7003cf55cdd5450a8763cc8997afa9c8c52957a0d87ed4f649e4a2).**
+
+In the ETL notebook, I load the data, which comes separately in `.csv` format from [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage?S_PKG=AW&cm_mmc=Search_Google-_-Cloud_Cloud+Platform-_-WW_NA-_-+ibm++object++storage_Broad_&cm_mmca1=000016GC&cm_mmca2=10007090&cm_mmca7=9060146&cm_mmca8=aud-311016886972:kwd-346458796492&cm_mmca9=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_&cm_mmca10=317209285867&cm_mmca11=b&mkwid=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_|1445|530530&cvosrc=ppc.google.%2Bibm%20%2Bobject%20%2Bstorage&cvo_campaign=000016GC&cvo_crid=317209285867&Matchtype=b&gclid=CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE), as Pandas DataFrames and performs data preprocessing with Python's [Pandas](https://pandas.pydata.org/) library. The data cleaning part includes the following:
+
+* Extracting relevant columns from the `outcomes` and `resources` data sets
+* Merging all separate dataframes on primary key `projectid`
+* Extracting the original training set based on dates the projects were posted *(only those posted before 01/01/2014)* and split it into new training and test set
+* Dropping irrelevant columns and columns with more than 10% values missing
+* Encoding some columns as binary dummies and converting some others to categoricals
+* Dropping rows that still contain NA values
+
+After preprocessing, the output dataframes *(`train` and `test`)* are stored in `.csv` format back to object storage as data assets named accordingly *(`Donation-Projects-Outcome-Prediction.data.train.csv` and `Donation-Projects-Outcome-Prediction.data.test.csv` in the [~/data section])* for future use.
+
+*(The naming convention comes from [Lightweight IBM Cloud Garage Method for Data Science](https://github.com/IBM/coursera/blob/master/coursera_capstone/Lightweight_IBM%20Cloud_Garage_Method_for_Data_Science_Romeo_Kienzler.pdf) by Romeo Kienzler)*
 
 
 ## 4. Methodology
