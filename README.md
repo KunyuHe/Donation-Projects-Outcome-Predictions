@@ -69,8 +69,6 @@ Random forest is considered a very handy and easy to use algorithm, because the 
 
 **However, since random forest is based on bagging, to achieve good performance we need a large number of very deep trees, which makes the training process rather slow on large data sets.**
 
-### b) XGBoost
-
 
 ## 5. EDA (Exploratory Data Analysis)
 
@@ -103,14 +101,15 @@ In the notebook, I'll read preprocessed training and testing data, which comes a
 Output data is stored in `.csv` fomat.
 
 
-## 7. Results
+## 7. Modeling
 
-### a). Random Forest
+**The Modeling notebook for this project is available [here](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/003188ac-fba2-4c1b-9aea-c48b6e441c96/view?access_token=92f6362d72dd16adde161360800ae262101094fc2115dada9552238264497196)*
 
-Performance of random forest with default parameters on the test set is rather unsatisfying, with a test accuracy of 69.216%, and test AUC of 0.637.
+In the modeling notebook for this project, I use both Random Forest and XGBoost to predict whether a donation project posted on DonorsChoose.org can get fully funded, based on information on resources they requested, essays they posted and their other characters. Training and test sets are split from projects posted before 01/01/2014. I used data outputs from the [Feature Engineering notebook](https://dataplatform.cloud.ibm.com/analytics/notebooks/v2/6d8c5d76-ea9f-4bf6-9b8a-3a0b09fb80cc/view?access_token=91df3b3a5ba72d70b2b60a9358fcdd1aa23098a6cc2acd4879fb39659013711d) stored on [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage?S_PKG=AW&cm_mmc=Search_Google-_-Cloud_Cloud+Platform-_-WW_NA-_-+ibm++object++storage_Broad_&cm_mmca1=000016GC&cm_mmca2=10007090&cm_mmca7=9060146&cm_mmca8=aud-311016886972:kwd-346458796492&cm_mmca9=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_&cm_mmca10=317209285867&cm_mmca11=b&mkwid=_k_CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE_k_|1445|530530&cvosrc=ppc.google.%2Bibm%20%2Bobject%20%2Bstorage&cvo_campaign=000016GC&cvo_crid=317209285867&Matchtype=b&gclid=CjwKCAiAyfvhBRBsEiwAe2t_i-XCqy6aVw7VL5rPgPbazlACBDB8tL5qFioP_k0oLEF8dxisH8cTlBoClHoQAvD_BwE) in `.csv` format. The models are trained and tuned based on the training set, and evaluated based on the test set. I use test AUC as my evaluating metrics.
 
-After tuning by grid search, random forest classification achieved a test accuracy of 74.813%, test AUC of 0.638.
+Models are first built with default parameters and tuned with grid search based on cross-validation. After tuning, random forest achieves a test accuracy of 74.679%, test AUC of 0.633. Most important features, according to random forest, include:
 
-![](https://github.com/KunyuHe/Donation-Projects-Outcome-Predictions/blob/master/EDA_outputs/important_features.png)
-
-However, random forest is quite slow on large data set and the performance is not satisfying. In a later version I would add XGBoost modeling.
+* Total price the project requested, including and excluding optional tip that donors give to DonorsChoose.org
+* Number of items requsted, maximum, median, and minimum unit prices of the items
+* Word count for need statement, short description and title of the projects
+* Number of students reached
